@@ -1,2 +1,2 @@
-# supra-mayro-galla-xy-
-supra mayro galla xy,
+# supra mayro galla xy,
+A very koni game.
