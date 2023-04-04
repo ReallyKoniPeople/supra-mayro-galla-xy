@@ -44,13 +44,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        //todo: Adjust grounded property to function with custom gravity
+        //grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
+        grounded = true;
 
         MyInput();
         SpeedControl();
         if (grounded)
         {
-            rb.drag = groundDrag;
+            //todo: drag always must be zero because it isnt working properly with gravity yet
+            //rb.drag = groundDrag;
+            rb.drag = 0;
         }
         else 
         {
