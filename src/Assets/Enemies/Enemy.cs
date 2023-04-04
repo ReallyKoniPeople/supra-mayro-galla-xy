@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour
 {
+    public float dyingAnimationDuration = 1;
+    public float dyingAnimationScale = 0.5f;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -25,8 +28,8 @@ public class Enemy : MonoBehaviour
                 }
 
                 var currentScale = transform.parent.parent.parent.localScale;
-                transform.parent.parent.parent.localScale = new(currentScale.x, currentScale.y * 0.5f, currentScale.z);
-                Destroy(transform.parent.parent.parent.gameObject, 1);
+                transform.parent.parent.parent.localScale = new(currentScale.x, currentScale.y * dyingAnimationScale, currentScale.z);
+                Destroy(transform.parent.parent.parent.gameObject, dyingAnimationDuration);
             }
             else
             {
