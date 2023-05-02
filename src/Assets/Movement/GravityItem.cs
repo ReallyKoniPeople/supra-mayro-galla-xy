@@ -1,21 +1,25 @@
-// The MIT License (MIT)
-// Copyright (c) 2016 David Evans @phosphoer
-
-// Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-// The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
+using Assets.Interfaces;
+using System.Collections.Generic;
 using UnityEngine;
 
-// USAGE: 
-// This is used internally by the GravitySource for tracking, and should not 
-// be manually added to any game objects 
+
+[AddComponentMenu("Gravity System/Gravity Item"), RequireComponent(typeof(Rigidbody))]
 public class GravityItem : MonoBehaviour
 {
+    [Tooltip("Up direction of this item")]
     public Vector3 Up = Vector3.up;
+    [Tooltip("How many Gravity Sources are affecting this object")]
     public int ActiveFieldCount;
+    [Tooltip("The current distance to a Gravity Source")]
     public float CurrentDistance = Mathf.Infinity;
-    public GravitySource CurrentGravitySource;
+    [Tooltip("Rotates this object so down always faces towards the Gravity Source (Useful for a player controller)")]
+    public bool RotateToGround = false;
+    public List<IGravitySource> CurrentGravitySource = new List<IGravitySource>();
+
+    public Rigidbody Rigidbody { get; private set; }
+
+    private void Awake()
+    {
+        Rigidbody = GetComponent<Rigidbody>();
+    }
 }

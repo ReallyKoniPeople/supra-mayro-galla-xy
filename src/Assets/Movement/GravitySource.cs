@@ -160,21 +160,21 @@ public class GravitySource : MonoBehaviour
             // Now apply gravity if we are the closest source (only 1 source at a time applies gravity)
             var item = rb.GetComponent<GravityItem>();
             //todo: remove 'true' from if-statement. Cannot be removed right now because the previous if-statements dont work yet.
-            if (item.CurrentGravitySource == this || closestHit < item.CurrentDistance || true)
-            {
-                // Update tracking vars 
-                item.CurrentDistance = closestHit;
-                item.CurrentGravitySource = this;
-                item.Up = Vector3.Lerp(item.Up, -gravityDir.normalized, Time.deltaTime * 2.0f);
+            //if (item.CurrentGravitySource == this || closestHit < item.CurrentDistance || true)
+            //{
+            //    // Update tracking vars 
+            //    item.CurrentDistance = closestHit;
+            //    item.CurrentGravitySource = this;
+            //    item.Up = Vector3.Lerp(item.Up, -gravityDir.normalized, Time.deltaTime * 2.0f);
 
-                // Calculate force
-                var force = gravityDir.normalized * Gravity;
-                var distRatio = Mathf.Clamp01(closestHit / Radius);
+            //    // Calculate force
+            //    var force = gravityDir.normalized * Gravity;
+            //    var distRatio = Mathf.Clamp01(closestHit / Radius);
 
-                // Gravity gets scaled up with distance because games
-                force *= 1.0f + distRatio;
-                rb.AddForce(force * rb.mass);
-            }
+            //    // Gravity gets scaled up with distance because games
+            //    force *= 1.0f + distRatio;
+            //    rb.AddForce(force * rb.mass);
+            //}
         }
     }
 }

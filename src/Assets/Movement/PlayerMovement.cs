@@ -49,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
         grounded = true;
 
         MyInput();
-        SpeedControl();
+        //SpeedControl();
         if (grounded)
         {
             //todo: drag always must be zero because it isnt working properly with gravity yet
@@ -60,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.drag = 0;
         }
+
     }
 
     private void FixedUpdate()
@@ -83,17 +84,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void MovePlayer() 
-    { 
-        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-
-        if (grounded)
-        {
-            rb.AddForce(moveDirection * moveSpeed * 10f, ForceMode.Force);
-        } else if (!grounded) 
-        {
-            rb.AddForce(moveDirection * moveSpeed * 10f * airMultiplier, ForceMode.Force);
-        }
-
+    {
+        transform.localPosition += transform.forward * moveSpeed * verticalInput;
+        transform.localPosition += transform.right * moveSpeed * horizontalInput;
     }
 
     private void SpeedControl() 
