@@ -1074,7 +1074,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.03359115, y: -0.000000034660992, z: 0.0000000011649601, w: 0.99943566}
+  m_LocalRotation: {x: 0.03359115, y: 0.000000034660992, z: -0.0000000011649601, w: 0.99943566}
   m_LocalPosition: {x: 0, y: 4, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2065,7 +2065,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897732875}
-  m_LocalRotation: {x: 0.03359116, y: -0.000000017330496, z: 5.824802e-10, w: 0.99943566}
+  m_LocalRotation: {x: 0.03359116, y: 0.000000017330496, z: -5.824802e-10, w: 0.99943566}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2355,7 +2355,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2821763346629582031, guid: 936b0f88b74ef874d8498a5ab6f95da7, type: 3}
       propertyPath: CurrentLevel
-      value: Level_1
+      value: Level_Boss
       objectReference: {fileID: 0}
     - target: {fileID: 4456876480980409332, guid: 936b0f88b74ef874d8498a5ab6f95da7, type: 3}
       propertyPath: m_Name
