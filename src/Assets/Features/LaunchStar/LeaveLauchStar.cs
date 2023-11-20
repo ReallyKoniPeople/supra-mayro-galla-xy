@@ -9,5 +9,6 @@ public class LeaveLauchStar : MonoBehaviour
         dollyCart.m_Path = null;
         dollyCart.m_Position = 0;
         other.transform.parent.rotation = Quaternion.identity;
+        other.transform.parent.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }
