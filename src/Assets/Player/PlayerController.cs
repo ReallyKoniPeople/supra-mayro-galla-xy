@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        transform.position += playerModel.forward * playerInput.z * moveSpeed * Time.deltaTime;
         if (!walkAudioSource.isPlaying && playerInput.z != 0f)
         {
             walkAudioSource.PlayOneShot(walkAudioSource.clip, 1f);
@@ -55,7 +56,6 @@ public class PlayerController : MonoBehaviour
         {
             walkAudioSource.Stop();
         }
-        transform.position += playerModel.forward * playerInput.z* moveSpeed * Time.deltaTime;
     }
 
     private void RotateCharacter()
