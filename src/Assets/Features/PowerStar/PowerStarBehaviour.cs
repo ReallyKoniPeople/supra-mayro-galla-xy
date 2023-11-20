@@ -1,4 +1,8 @@
 using Assets;
+using Cinemachine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,6 +11,7 @@ public class PowerStarBehaviour : MonoBehaviour
     public string CurrentLevel;
     private bool StarCollected = false;
 
+    public AudioSource audioSource;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player") && !StarCollected)
@@ -26,6 +31,21 @@ public class PowerStarBehaviour : MonoBehaviour
 
             SceneManager.LoadScene("LevelSelection");
             StarCollected = true;
+
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(audioSource.clip, 1f);
+            }
+            StartCoroutine(WaitForSoundFinished());
         }
+    }
+
+    private IEnumerator WaitForSoundFinished()
+    {
+        while (audioSource.isPlaying)
+        {
+            yield return null;
+        }
+        SceneManager.LoadScene(1);
     }
 }
