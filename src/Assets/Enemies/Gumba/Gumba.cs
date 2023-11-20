@@ -18,7 +18,6 @@ public class Gumba : MonoBehaviour
     public void Update()
     {
         int random = Random.Range(1, 10000);
-        print(random);
         if (random == 1)
         {
             if (!randomAudioSource.isPlaying)

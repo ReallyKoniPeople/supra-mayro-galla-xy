@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(_customGravity.currentNormal * jumpForce, ForceMode.VelocityChange);
         jumpAudioSource.PlayOneShot(jumpAudioSource.clip, 1f);
-        rb.AddForce(_customGravity.currentNormal*jumpForce,ForceMode.VelocityChange);
     }
 
     public void PlayerDeath()
