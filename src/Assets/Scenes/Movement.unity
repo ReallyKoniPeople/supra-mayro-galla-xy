@@ -998,7 +998,6 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
-  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1114,23 +1113,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &963194230
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7d0a60206120d489a0f726fa23e2ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orientation: {fileID: 0}
-  player: {fileID: 1998824763}
-  playerObj: {fileID: 0}
-  rb: {fileID: 1998824764}
-  rotationSpeed: 7
 --- !u!1 &1179316927
 GameObject:
   m_ObjectHideFlags: 3
@@ -1201,7 +1183,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179316927}
-  m_LocalRotation: {x: 0.09252102, y: -0.000000017659854, z: 0.0000000016409462, w: 0.99571073}
+  m_LocalRotation: {x: 0.09252102, y: 0.00000001765986, z: -0.0000000016409466, w: 0.99571073}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1886,16 +1868,6 @@ Transform:
   m_Father: {fileID: 583123308}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1998824763 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2620743437126534513, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
-  m_PrefabInstance: {fileID: 7109481865795126656}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1998824764 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 3134365988103970816, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
-  m_PrefabInstance: {fileID: 7109481865795126656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4714190944685487711
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1904,6 +1876,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2821763346629582031, guid: 936b0f88b74ef874d8498a5ab6f95da7, type: 3}
+      propertyPath: CurrentLevel
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4456876480980409332, guid: 936b0f88b74ef874d8498a5ab6f95da7, type: 3}
       propertyPath: m_Name
       value: Power-Star
@@ -2087,6 +2063,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 166270519374881182, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2620743437126534513, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2129,10 +2109,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2620743437126534513, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3134365988103970816, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
-      propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5877940417392984465, guid: 6de8d4efda1418e4ba3cf249338f6c15, type: 3}
