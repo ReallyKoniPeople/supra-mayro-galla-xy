@@ -73,16 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!deathAudioSource.isPlaying)
         {
+            DontDestroyOnLoad(deathAudioSource);
             deathAudioSource.PlayOneShot(deathAudioSource.clip, 1f);
-        }
-        StartCoroutine(WaitForSoundFinished());
-    }
-
-    private IEnumerator WaitForSoundFinished()
-    {
-        while (deathAudioSource.isPlaying)
-        {
-            yield return null;
         }
         SceneManager.LoadScene(1);
     }
