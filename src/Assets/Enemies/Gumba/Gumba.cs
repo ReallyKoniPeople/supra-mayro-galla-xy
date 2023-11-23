@@ -50,7 +50,7 @@ public class Gumba : MonoBehaviour
 
         var currentScale = transform.parent.parent.parent.localScale;
         transform.parent.parent.parent.localScale = new(currentScale.x, currentScale.y * dyingAnimationScale, currentScale.z);
+        other.transform.parent.GetComponent<PlayerController>().JumpWithoutSound();
         Destroy(transform.parent.parent.parent.gameObject, dyingAnimationDuration);
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().JumpWithoutSound();
     }
 }

@@ -32,8 +32,8 @@ public class Shell : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player")) return;
-        Destroy(transform.parent.parent.parent.gameObject);
 
-        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().JumpWithoutSound();
+        other.transform.parent.GetComponent<PlayerController>().JumpWithoutSound();
+        Destroy(transform.parent.parent.parent.gameObject);
     }
 }

@@ -26,7 +26,7 @@ public class Kubba : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
-        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        var player = other.transform.parent.GetComponent<PlayerController>();
         if (!CompareTag("EnemyWeakpoint"))
         {
             player.PlayerDeath();
