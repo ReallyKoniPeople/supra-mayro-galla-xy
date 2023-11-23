@@ -1,13 +1,10 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Tromp : MonoBehaviour
 {
     public AudioSource impactAudioSource;
     bool directionUp = true;
-    public PlayerController player;
 
 
     void Start()
@@ -32,10 +29,12 @@ public class Tromp : MonoBehaviour
             directionUp = true;
         }
 
-        if (directionUp) {
+        if (directionUp)
+        {
             dollyCart.m_Speed = 5.0f;
         }
-        else {
+        else
+        {
             dollyCart.m_Speed = -25.0f;
         }
     }
@@ -44,8 +43,7 @@ public class Tromp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-            player.PlayerDeath();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerDeath();
         }
     }
 }
