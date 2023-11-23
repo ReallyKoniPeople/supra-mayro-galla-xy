@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -63,9 +62,14 @@ public class PlayerController : MonoBehaviour
         playerModel.Rotate(Vector3.up, playerInput.x * rotateSpeed * Time.deltaTime);
     }
 
+    public void JumpWithoutSound()
+    {
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_customGravity.currentNormal * jumpForce, ForceMode.VelocityChange);
+    }
     private void Jump()
     {
-        rb.AddForce(_customGravity.currentNormal * jumpForce, ForceMode.VelocityChange);
+        JumpWithoutSound();
         jumpAudioSource.PlayOneShot(jumpAudioSource.clip, 1f);
     }
 
