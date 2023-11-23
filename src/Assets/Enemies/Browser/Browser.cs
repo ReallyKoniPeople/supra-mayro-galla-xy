@@ -19,10 +19,6 @@ public class Browser : MonoBehaviour
 
     public AudioSource shootAudioSource1;
     public AudioSource shootAudioSource2;
-
-    // Update is called once per frame
-    void Update()
-    {
         ShootAtPlayer();
 
         // movement

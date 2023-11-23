@@ -26,19 +26,18 @@ public class CustomGravity : MonoBehaviour
     private void Update()
     {
         CheckForGravityDir();
-        alignToSurface();
+        AlignToSurface();
     }
     private void ApplyGravity()
     {
-        rb.AddForce(-currentNormal * gravityPower * Time.deltaTime, ForceMode.Acceleration);
+        rb.AddForce(gravityPower * Time.deltaTime * -currentNormal, ForceMode.Acceleration);
     }
 
     void CheckForGravityDir()
     {
         var colliders = Physics.OverlapSphere(transform.position, groundCheckDistance);
         Vector3 closestPoint = Vector3.zero;
-        Vector3 lastSurfacePos = Vector3.zero;
-        float distance = Single.MaxValue;
+        float distance = float.MaxValue;
 
         int totalCollision = 0;
         foreach (var collider in colliders)
@@ -64,11 +63,10 @@ public class CustomGravity : MonoBehaviour
         if (hitSuccess)
         {
             newNormal = hitInfo.normal;
-            lastSurfacePos = hitInfo.point;
         }
 
     }
-    private void alignToSurface()
+    private void AlignToSurface()
     {
         // this will smooth out change from current normal to next normal
         currentNormal = Vector3.Lerp(currentNormal, newNormal, playerSmoothRotation);

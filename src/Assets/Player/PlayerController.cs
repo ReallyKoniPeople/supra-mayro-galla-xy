@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        transform.position += playerModel.forward * playerInput.z * moveSpeed * Time.deltaTime;
+        transform.position += moveSpeed * playerInput.z * Time.deltaTime * playerModel.forward;
         if (!walkAudioSource.isPlaying && playerInput.z != 0f)
         {
             walkAudioSource.PlayOneShot(walkAudioSource.clip, 1f);
@@ -63,9 +62,14 @@ public class PlayerController : MonoBehaviour
         playerModel.Rotate(Vector3.up, playerInput.x * rotateSpeed * Time.deltaTime);
     }
 
+    public void JumpWithoutSound()
+    {
+        rb.velocity = Vector3.zero;
+        rb.AddForce(_customGravity.currentNormal * jumpForce, ForceMode.VelocityChange);
+    }
     private void Jump()
     {
-        rb.AddForce(_customGravity.currentNormal * jumpForce, ForceMode.VelocityChange);
+        JumpWithoutSound();
         jumpAudioSource.PlayOneShot(jumpAudioSource.clip, 1f);
     }
 
@@ -73,16 +77,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!deathAudioSource.isPlaying)
         {
+            DontDestroyOnLoad(deathAudioSource);
             deathAudioSource.PlayOneShot(deathAudioSource.clip, 1f);
-        }
-        StartCoroutine(WaitForSoundFinished());
-    }
-
-    private IEnumerator WaitForSoundFinished()
-    {
-        while (deathAudioSource.isPlaying)
-        {
-            yield return null;
         }
         SceneManager.LoadScene(1);
     }

@@ -1,14 +1,14 @@
 using Cinemachine;
 using UnityEngine;
 
-public class Gumba : MonoBehaviour
+public class Kubba : MonoBehaviour
 {
-    public float dyingAnimationDuration = 1;
-    public float dyingAnimationScale = 0.5f;
+    public float heightOffset = 1.65f;
 
     public AudioSource randomAudioSource;
     public AudioSource walkAudioSource;
     public AudioSource deathAudioSource;
+    public GameObject shellPrefab;
 
     public void Update()
     {
@@ -26,9 +26,10 @@ public class Gumba : MonoBehaviour
     {
         if (!other.CompareTag("Player")) return;
 
+        var player = other.transform.parent.GetComponent<PlayerController>();
         if (!CompareTag("EnemyWeakpoint"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerDeath();
+            player.PlayerDeath();
             return;
         }
 
@@ -37,20 +38,23 @@ public class Gumba : MonoBehaviour
             deathAudioSource.PlayOneShot(deathAudioSource.clip, 1f);
         }
 
-        foreach (Transform child in transform.parent)
-        {
-            if (child.TryGetComponent(out Collider collider))
-                collider.enabled = false;
-        }
-
         if (transform.parent.parent.TryGetComponent(out CinemachineDollyCart dollyCart))
         {
             dollyCart.enabled = false;
         }
 
-        var currentScale = transform.parent.parent.parent.localScale;
-        transform.parent.parent.parent.localScale = new(currentScale.x, currentScale.y * dyingAnimationScale, currentScale.z);
-        other.transform.parent.GetComponent<PlayerController>().JumpWithoutSound();
-        Destroy(transform.parent.parent.parent.gameObject, dyingAnimationDuration);
+        player.JumpWithoutSound();
+
+
+        var shellObject = Instantiate(shellPrefab);
+        shellObject.transform.SetPositionAndRotation(new Vector3(transform.parent.position.x, transform.parent.position.y - heightOffset, transform.parent.position.z), transform.parent.rotation);
+        shellObject.transform.parent = transform.parent.parent;
+
+        //transform.parent.gameObject.SetActive(false);
+        foreach (Transform child in transform.parent)
+        {
+            if (child.name != "KubbaDeathAudio")
+                child.gameObject.SetActive(false);
+        }
     }
 }
