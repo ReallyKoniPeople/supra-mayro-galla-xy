@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Settings : MonoBehaviour
@@ -10,15 +8,10 @@ public class Settings : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = targetFrameRate;
-        if(disableCursor){
+        if (disableCursor)
+        {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

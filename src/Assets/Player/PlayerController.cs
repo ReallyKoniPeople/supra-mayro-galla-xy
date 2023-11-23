@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        transform.position += playerModel.forward * playerInput.z * moveSpeed * Time.deltaTime;
+        transform.position += moveSpeed * playerInput.z * Time.deltaTime * playerModel.forward;
         if (!walkAudioSource.isPlaying && playerInput.z != 0f)
         {
             walkAudioSource.PlayOneShot(walkAudioSource.clip, 1f);

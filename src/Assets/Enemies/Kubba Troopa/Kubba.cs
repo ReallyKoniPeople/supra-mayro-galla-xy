@@ -1,5 +1,4 @@
 using Cinemachine;
-using UnityEditor;
 using UnityEngine;
 
 public class Kubba : MonoBehaviour
@@ -48,8 +47,7 @@ public class Kubba : MonoBehaviour
 
 
         var shellObject = Instantiate(shellPrefab);
-        shellObject.transform.position = new Vector3(transform.parent.position.x, transform.parent.position.y - heightOffset, transform.parent.position.z);
-        shellObject.transform.rotation = transform.parent.rotation;
+        shellObject.transform.SetPositionAndRotation(new Vector3(transform.parent.position.x, transform.parent.position.y - heightOffset, transform.parent.position.z), transform.parent.rotation);
         shellObject.transform.parent = transform.parent.parent;
 
         //transform.parent.gameObject.SetActive(false);
