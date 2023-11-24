@@ -11,7 +11,7 @@ public class Shell : MonoBehaviour
 
     private IEnumerator CrawlOutOfShell()
     {
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(5);
         var kubba = transform.parent.parent.Find("Kubba");
         if (kubba != null)
         {
