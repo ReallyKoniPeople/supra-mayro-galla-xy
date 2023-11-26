@@ -24,7 +24,10 @@ public class PowerStarBehaviour : MonoBehaviour
             }
             else if (!LevelStats.LevelBossCleared && CurrentLevel == "Level_Boss")
             {
+                //Player has winned the game
                 LevelStats.LevelBossCleared = true;
+                SceneManager.LoadScene("GameUnder");
+                return;
             }
 
             PlayerStats.Lives++;

@@ -88,11 +88,6 @@ public class PlayerController : MonoBehaviour
         if (PlayerStats.Lives > 0)
             SceneManager.LoadScene("LevelSelection");
         else
-        {
-            LevelStats.Level1Cleared = false; 
-            LevelStats.Level2Cleared = false;
-            LevelStats.LevelBossCleared = false;
             SceneManager.LoadScene("GameOver");
-        }
     }
 }
