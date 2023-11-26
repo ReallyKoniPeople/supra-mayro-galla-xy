@@ -1,3 +1,5 @@
+using Assets;
+using Assets.Scripts;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -80,6 +82,17 @@ public class PlayerController : MonoBehaviour
             DontDestroyOnLoad(deathAudioSource);
             deathAudioSource.PlayOneShot(deathAudioSource.clip, 1f);
         }
-        SceneManager.LoadScene(1);
+
+        PlayerStats.Lives--;
+
+        if (PlayerStats.Lives > 0)
+            SceneManager.LoadScene("LevelSelection");
+        else
+        {
+            LevelStats.Level1Cleared = false; 
+            LevelStats.Level2Cleared = false;
+            LevelStats.LevelBossCleared = false;
+            SceneManager.LoadScene("GameOver");
+        }
     }
 }

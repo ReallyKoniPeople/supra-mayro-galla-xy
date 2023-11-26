@@ -1,4 +1,5 @@
 using Assets;
+using Assets.Scripts;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -26,6 +27,7 @@ public class PowerStarBehaviour : MonoBehaviour
                 LevelStats.LevelBossCleared = true;
             }
 
+            PlayerStats.Lives++;
             SceneManager.LoadScene("LevelSelection");
             StarCollected = true;
 
