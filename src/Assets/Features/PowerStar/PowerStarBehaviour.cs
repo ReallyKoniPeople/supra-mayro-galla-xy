@@ -24,15 +24,20 @@ public class PowerStarBehaviour : MonoBehaviour
             }
             else if (!LevelStats.LevelBossCleared && CurrentLevel == "Level_Boss")
             {
-                //Player has winned the game
                 LevelStats.LevelBossCleared = true;
-                SceneManager.LoadScene("GameUnder");
-                return;
             }
 
             PlayerStats.Lives++;
-            SceneManager.LoadScene("LevelSelection");
             StarCollected = true;
+
+            if (CurrentLevel == "Level_Boss")
+            {
+                SceneManager.LoadScene("GameUnder");
+            }
+            else
+            {
+                SceneManager.LoadScene("LevelSelection");            
+            }
 
             if (!audioSource.isPlaying)
             {
