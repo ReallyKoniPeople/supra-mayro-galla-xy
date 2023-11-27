@@ -26,11 +26,11 @@ public class Browser : MonoBehaviour
         // movement
         CinemachineDollyCart dollyCart = transform.Find("Dolly Cart").GetComponent<CinemachineDollyCart>();
             
-        if (directionRight && dollyCart.m_Position == 0.0)
+        if (directionRight && dollyCart.m_Position <= 0.0)
         {
             directionRight = false;
         }
-        else if (!directionRight && dollyCart.m_Position == 5.0)
+        else if (!directionRight && dollyCart.m_Position >= 5.0)
         {
             directionRight = true;
         }
