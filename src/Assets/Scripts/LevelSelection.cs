@@ -14,11 +14,15 @@ public class LevelSelection : MonoBehaviour
         {
             var level2Button = GameObject.Find("Level2Button").GetComponent<Button>();
             level2Button.interactable = true;
+            var level2Chribbel = GameObject.Find("Level2Chribbel").GetComponent<Image>();
+            level2Chribbel.enabled = false;
         }
         if (LevelStats.Level2Cleared)
         {
             var levelBossButton = GameObject.Find("LevelBossButton").GetComponent<Button>();
             levelBossButton.interactable = true;
+            var level3Chribbel = GameObject.Find("Level3Chribbel").GetComponent<Image>();
+            level3Chribbel.enabled = false;
         }
     }
 
