@@ -43,7 +43,7 @@ public class Tromp : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerDeath();
+            other.transform.parent.GetComponent<PlayerController>().PlayerDeath();
         }
     }
 }

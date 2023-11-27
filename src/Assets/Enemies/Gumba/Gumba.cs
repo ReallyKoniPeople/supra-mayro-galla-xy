@@ -28,7 +28,7 @@ public class Gumba : MonoBehaviour
 
         if (!CompareTag("EnemyWeakpoint"))
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().PlayerDeath();
+            other.transform.parent.GetComponent<PlayerController>().PlayerDeath();
             return;
         }
 
